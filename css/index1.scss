@@ -1,0 +1,104 @@
+@import 'mixin';
+@import 'font';
+
+$toolbar-size : 52px;
+
+a{
+	color:#000;
+	text-decoration: none;
+}
+.toolbar{
+	position: fixed;
+	left: 50%;
+	@include transform(translate(-$toolbar-size / 2 ,0));
+	bottom: 10px;
+}
+
+.toolbar-item{
+	display: block;
+	position: relative;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	margin-bottom: 1px;
+	position: relative;
+	&:hover{
+		.toolbar-icon{
+			top:-$toolbar-size
+		}
+		.toolbar-text{
+			top:0;
+		}
+
+		.toolbar-layer-weixin{
+			
+			@include transform(scale(1));
+			@include opacity(1);
+		}
+		.toolbar-layer-app{
+			
+			@include transform(scale(1));
+			@include opacity(1);
+		}
+	};
+}
+
+.toolbar-btn{
+	position: absolute;
+	width:$toolbar-size;
+	height: $toolbar-size;
+	top:0;
+	left: 0;
+	overflow: hidden;
+}
+.toolbar-icon{
+	position: absolute;
+	top:0;
+	left: 0;
+	display: block;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	text-align: center;
+	color:#fff;
+	font-size:30px;
+	line-height: $toolbar-size;
+	background-color:#d0d6d9;
+	@include transition(top 1s);
+
+}
+.toolbar-text{
+	position: absolute;
+	top:$toolbar-size;
+	left: 0;
+	width: $toolbar-size;
+	height: $toolbar-size - 12;
+	line-height: 1.2;
+	text-align: center;
+	padding-top:12px;
+	color:#fff;
+	font-weight: bold;
+	background-color: rgb(152,161,166);
+	@include transition(top 1s);
+}
+
+.toolbar-layer{
+	position: absolute;
+	bottom:-10px;
+	right: $toolbar-size - 6;
+	@include transform-origin(95% 95%);
+	@include opacity(0);
+	@include transition(all 1s);
+	@include transform(scale(0.01));
+	background-image: url(../img/toolbar_img.png);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	width:172px;
+
+}
+.toolbar-layer-weixin{
+	height: 212px;
+	background-position: 0 -0;
+}
+.toolbar-layer-app{
+	height: 194px;
+	background-position: 0 -222px;
+}
